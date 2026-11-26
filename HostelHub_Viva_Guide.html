@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>HostelHub - Project Presentation & Viva Guide</title>
+<style>
+    @page {
+        size: A4;
+        margin: 18mm 15mm 18mm 15mm;
+    }
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        color: #2c3e50;
+        line-height: 1.5;
+        font-size: 11pt;
+    }
+    h1 {
+        color: #1a365d;
+        border-bottom: 3px solid #2b6cb0;
+        padding-bottom: 8px;
+        font-size: 24pt;
+        margin-top: 0;
+    }
+    h2 {
+        color: #2b6cb0;
+        border-bottom: 1.5px solid #cbd5e0;
+        padding-bottom: 4px;
+        font-size: 16pt;
+        margin-top: 24px;
+        page-break-after: avoid;
+    }
+    h3 {
+        color: #2d3748;
+        font-size: 13pt;
+        margin-top: 16px;
+        page-break-after: avoid;
+    }
+    .badge {
+        background: #ebf8ff;
+        color: #2b6cb0;
+        padding: 3px 8px;
+        border-radius: 4px;
+        font-size: 9pt;
+        font-weight: bold;
+        border: 1px solid #bee3f8;
+    }
+    .box {
+        background: #f7fafc;
+        border-left: 4px solid #3182ce;
+        padding: 12px 16px;
+        margin: 14px 0;
+        border-radius: 0 6px 6px 0;
+    }
+    .box-tip {
+        background: #f0fff4;
+        border-left: 4px solid #38a169;
+        padding: 12px 16px;
+        margin: 14px 0;
+    }
+    .box-alert {
+        background: #fffaf0;
+        border-left: 4px solid #dd6b20;
+        padding: 12px 16px;
+        margin: 14px 0;
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 14px 0;
+        font-size: 10pt;
+    }
+    th, td {
+        border: 1px solid #e2e8f0;
+        padding: 8px 10px;
+        text-align: left;
+    }
+    th {
+        background-color: #edf2f7;
+        color: #2d3748;
+        font-weight: 600;
+    }
+    tr:nth-child(even) {
+        background-color: #f7fafc;
+    }
+    code {
+        background: #edf2f7;
+        color: #c53030;
+        padding: 2px 5px;
+        border-radius: 3px;
+        font-family: Consolas, monospace;
+        font-size: 9.5pt;
+    }
+    pre {
+        background: #1a202c;
+        color: #e2e8f0;
+        padding: 12px;
+        border-radius: 6px;
+        overflow-x: auto;
+        font-size: 9.5pt;
+        font-family: Consolas, monospace;
+    }
+    .page-break {
+        page-break-before: always;
+    }
+    ul, ol {
+        margin-top: 6px;
+        margin-bottom: 10px;
+        padding-left: 24px;
+    }
+    li {
+        margin-bottom: 4px;
+    }
+</style>
+</head>
+<body>
+
+<h1>HostelHub – Project Presentation & Viva Guide</h1>
+<p><strong>System Name:</strong> HostelHub (Smart Hostel Management System)<br>
+<strong>Technology Stack:</strong> Pure Core Java (JDK 17/21), Object-Oriented Architecture, CSV File Persistence<br>
+<strong>Scope:</strong> 42 Modular Classes, Custom Exceptions, Strategy Pattern, Multi-Level Hierarchy</p>
+
+<div class="box">
+    <strong>Executive Pitch for Teachers:</strong><br>
+    <em>"HostelHub is an enterprise-grade terminal-based Hostel Management System written in pure Java. Unlike basic toy projects with hardcoded arrays, it manages multi-hostel infrastructures, floor-level caretakers, distance-based room allocations (the 30 km rule), overnight gate passes, maintenance complaints, and prorated mid-semester fee refunds using industry-standard design patterns and transparent CSV persistence."</em>
+</div>
+
+<h2>1. Step-by-Step Presentation Script for Your Teacher</h2>
+<p>When presenting in front of your teacher, divide your 5-minute presentation into 5 crisp sections:</p>
+
+<h3>Step 1: Introduction & Motivation (1 Minute)</h3>
+<ul>
+    <li>State the problem: College hostels currently rely on manual paper registers, leading to lost gate pass records, biased room allocation, and untracked maintenance complaints.</li>
+    <li>State the solution: <strong>HostelHub</strong> automates this workflow dynamically without hardcoding.</li>
+    <li>Highlight the scale: Mention that the project is cleanly modularized into <strong>42 Java classes, interfaces, and enums</strong> across 4 packages (<code>model</code>, <code>service</code>, <code>exception</code>, <code>storage</code>).</li>
+</ul>
+
+<h3>Step 2: Live Demonstration Flow (2.5 Minutes)</h3>
+<ol>
+    <li><strong>Launch the Program:</strong> Run <code>.\run.bat</code> or press Play in VS Code. Point out the clean menu with 12 operations.</li>
+    <li><strong>Show Pre-Stored Staff (Option 4):</strong> Show that Chief Warden, Assistant Warden, and 5 Floor Caretakers are already active and assigned to specific hostels and floors.</li>
+    <li><strong>Demonstrate the 30 km Distance Rule (Option 2 & 3):</strong>
+        <ul>
+            <li>Register an outstation student (e.g., 180 km) &rarr; system places them in the <strong>Eligible Queue</strong>.</li>
+            <li>Register a localite student (e.g., 15 km) &rarr; system flags distance &le; 30 km and puts them on the <strong>Waitlist</strong>.</li>
+            <li>Try allocating a room to the localite student &rarr; point out how the custom exception <code>IneligibleDistanceException</code> blocks it to protect outstation students!</li>
+        </ul>
+    </li>
+    <li><strong>Demonstrate Strategy Pattern Refund (Option 7):</strong> Show mid-semester checkout calculation (unused months calculated, 15% cancellation penalty deducted, deposit refunded).</li>
+    <li><strong>Audit & Export (Option 10):</strong> Generate the live audit report and show that it automatically updates <code>data/system_report.txt</code>.</li>
+</ol>
+
+<h3>Step 3: Show the Data Files (30 Seconds)</h3>
+<p>Open the <code>data/</code> folder in VS Code or File Explorer:</p>
+<ul>
+    <li><code>data/staff.csv</code> &rarr; shows all wardens and caretakers.</li>
+    <li><code>data/students.csv</code> &rarr; shows student profiles and distance records.</li>
+    <li><code>data/rooms.csv</code> &rarr; shows live occupancy, capacity, and allocated roll numbers.</li>
+</ul>
+
+<div class="page-break"></div>
+
+<h2>2. Core Java & OOP Concepts Mapping (Viva Essentials)</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th style="width: 25%;">OOP Concept</th>
+            <th style="width: 40%;">Exact Implementation in HostelHub</th>
+            <th style="width: 35%;">Key Classes to Show</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><strong>Encapsulation</strong></td>
+            <td>All attributes private; getters/setters enforce data validation (e.g., room capacity cannot be exceeded).</td>
+            <td><code>Room.java</code>, <code>Student.java</code>, <code>Hostel.java</code></td>
+        </tr>
+        <tr>
+            <td><strong>Abstraction</strong></td>
+            <td>Abstract base classes enforce common interfaces without exposing internal details.</td>
+            <td><code>Person.java</code> (abstract), <code>Staff.java</code> (abstract), <code>GatePass.java</code></td>
+        </tr>
+        <tr>
+            <td><strong>Multilevel Inheritance</strong></td>
+            <td><code>Person</code> &rarr; <code>Staff</code> &rarr; <code>Warden</code> & <code>Caretaker</code>.<br><code>Person</code> &rarr; <code>Student</code>.</td>
+            <td><code>Person.java</code>, <code>Staff.java</code>, <code>Warden.java</code>, <code>Caretaker.java</code></td>
+        </tr>
+        <tr>
+            <td><strong>Hierarchical Polymorphism</strong></td>
+            <td>Dynamic method dispatch: <code>displayDetails()</code> overridden in subclasses; runtime resolves target object.</td>
+            <td><code>Student.java</code>, <code>Warden.java</code>, <code>Caretaker.java</code></td>
+        </tr>
+        <tr>
+            <td><strong>Composition ("HAS-A")</strong></td>
+            <td><code>Hostel</code> HAS-A <code>List&lt;Floor&gt;</code>.<br><code>Floor</code> HAS-A <code>List&lt;Room&gt;</code>.<br><code>Room</code> HAS-A <code>List&lt;RollNumbers&gt;</code>.</td>
+            <td><code>Hostel.java</code>, <code>Floor.java</code>, <code>Room.java</code></td>
+        </tr>
+        <tr>
+            <td><strong>Strategy Design Pattern</strong></td>
+            <td>Interchangeable refund calculation algorithms selected at runtime without modifying client code.</td>
+            <td><code>RefundPolicy.java</code> (Interface), <code>MidSemesterRefundPolicy</code>, <code>StandardRefundPolicy</code></td>
+        </tr>
+        <tr>
+            <td><strong>DAO / Storage Pattern</strong></td>
+            <td>Decoupling business services from storage mechanisms using an interface contract.</td>
+            <td><code>StorageEngine.java</code> (Interface), <code>FileStorageService.java</code></td>
+        </tr>
+        <tr>
+            <td><strong>Custom Exceptions</strong></td>
+            <td>Checked exception hierarchy for business rule validation.</td>
+            <td><code>HostelException.java</code>, <code>RoomFullException</code>, <code>IneligibleDistanceException</code></td>
+        </tr>
+        <tr>
+            <td><strong>Collections Framework</strong></td>
+            <td><code>ArrayList</code> (dynamic lists), <code>LinkedHashMap</code> (O(1) student lookup), <code>LinkedList</code> (FCFS queue).</td>
+            <td><code>HostelService.java</code></td>
+        </tr>
+    </tbody>
+</table>
+
+<div class="page-break"></div>
+
+<h2>3. What is JDBC and How Can It Help Us in the Future?</h2>
+
+<div class="box-alert">
+    <strong>Top Teacher Question:</strong> <em>"How would you improve this project in the future? What is JDBC and why would you use it instead of CSV files?"</em>
+</div>
+
+<h3>What is JDBC?</h3>
+<p><strong>JDBC (Java Database Connectivity)</strong> is an official Java API that allows Java applications to interact with relational database management systems (RDBMS) such as MySQL, PostgreSQL, Oracle, or SQLite using standard SQL queries.</p>
+
+<h3>How JDBC Works (The 4 Core Steps):</h3>
+<pre>
+// 1. Establish connection to Database
+Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/hostel_db", "user", "password");
+
+// 2. Prepare SQL statement (prevents SQL Injection)
+PreparedStatement ps = con.prepareStatement("SELECT * FROM students WHERE roll_number = ?");
+ps.setString(1, "2024CS01");
+
+// 3. Execute query and retrieve records
+ResultSet rs = ps.executeQuery();
+
+// 4. Process tabular data
+while(rs.next()) {
+    String name = rs.getString("name");
+}
+</pre>
+
+<h3>Why Migrate from CSV Files to JDBC? (Key Benefits):</h3>
+<ol>
+    <li><strong>Concurrency & Thread Safety:</strong> In CSV files, if two students try to book the last available room at the exact same millisecond, file writing conflicts or race conditions occur. Databases use <strong>Row-Level Locking</strong> to guarantee only one student gets the bed.</li>
+    <li><strong>ACID Transaction Guarantee:</strong> Financial fee payments require Atomicity (all-or-nothing). If payment goes through but network drops before room allocation, JDBC transactions can <code>commit()</code> or <code>rollback()</code> cleanly.</li>
+    <li><strong>High Performance via Indexing:</strong> In a hostel with 5,000 students, CSV requires scanning lines linearly (<em>O(N)</em>). Databases use B-Tree indexes for instant search (<em>O(1)</em> or <em>O(log N)</em>).</li>
+    <li><strong>Relational Joins:</strong> Instead of writing multiple loops to join a student with their room, floor, warden, and fee receipt, a single SQL <code>JOIN</code> query retrieves everything in 1 call.</li>
+</ol>
+
+<div class="page-break"></div>
+
+<h2>4. Critical Value-Adds (Things You Can Tell Your Teacher to Get Full Marks)</h2>
+
+<p>Here are 4 advanced architectural details you should mention that other students won't have:</p>
+
+<div class="box-tip">
+    <strong>1. Open-Closed Principle (OCP from SOLID):</strong><br>
+    <em>"Sir, notice our <code>RefundPolicy</code> interface. If the university introduces a new 'Scholarship Student Refund Policy' next semester, we only need to write one new class <code>ScholarshipRefundPolicy implements RefundPolicy</code>. We do not need to alter or re-test any existing allocation or fee code. This satisfies the Open-Closed Principle (open for extension, closed for modification)."</em>
+</div>
+
+<div class="box-tip">
+    <strong>2. Input Crash Protection (Bulletproof CLI):</strong><br>
+    <em>"Most student console programs crash if you type a letter when an integer is expected. In <code>Main.java</code>, our <code>readIntInput()</code> and <code>readDoubleInput()</code> methods wrap <code>Scanner</code> in a <code>try-catch (NumberFormatException)</code> loop. The terminal gracefully prompts again without terminating."</em>
+</div>
+
+<div class="box-tip">
+    <strong>3. Strategy vs Inheritance:</strong><br>
+    <em>"We used inheritance for our entities (<code>Person &rarr; Student, Staff</code>) because a student IS-A person. But for checkout refunds, we used the Strategy Pattern because refund calculation is a behavior/algorithm that changes dynamically, not an identity."</em>
+</div>
+
+<div class="box-tip">
+    <strong>4. Transparent CSV Storage vs Black-Box Serialization:</strong><br>
+    <em>"Instead of storing data in an unreadable binary file, we created <code>FileStorageService</code> which writes clean CSV files. This allows hostel administrators to import records directly into Excel or generate external college reports."</em>
+</div>
+
+<h2>5. Future Scope & Roadmap</h2>
+<ul>
+    <li><strong>Database Migration:</strong> Integrate MySQL using JDBC with a connection pool (HikariCP).</li>
+    <li><strong>Web Portal (Full Stack):</strong> Wrap the business logic with Spring Boot REST APIs and a React/Flutter frontend for mobile access.</li>
+    <li><strong>IoT / Biometric Gate Passes:</strong> Connect RFID or fingerprint turnstiles at hostel gates to auto-update student in/out times in real time.</li>
+    <li><strong>Automated Notifications:</strong> Twilio/SendGrid API integration to send automated SMS to parents when a student applies for a Night Out pass.</li>
+    <li><strong>Role-Based Authentication:</strong> Secure password hashing (BCrypt) with individual logins for Students, Caretakers, and Chief Wardens.</li>
+</ul>
+
+<div class="page-break"></div>
+
+<h2>6. 15 Rapid-Fire Viva Questions & Model Answers</h2>
+
+<p><strong>Q1: Why did you choose pure Java instead of a web framework?</strong><br>
+<em>A: To focus 100% on core Object-Oriented principles, data structures, and algorithmic logic without frontend framework distractions.</em></p>
+
+<p><strong>Q2: Why is Roll Number the primary identifier instead of a separate Student ID?</strong><br>
+<em>A: In university systems, Roll Numbers are already unique and assigned by the university administration. Generating duplicate IDs adds unnecessary redundancy.</em></p>
+
+<p><strong>Q3: What happens if a room becomes full?</strong><br>
+<em>A: The system throws our custom <code>RoomFullException</code>, which is caught gracefully by the UI to inform the user and prevent overbooking.</em></p>
+
+<p><strong>Q4: How is the 30 km rule enforced?</strong><br>
+<em>A: In <code>Student.java</code>, <code>isLocalite()</code> checks if <code>distanceFromCollege &le; 30.0</code>. In <code>HostelService</code>, if an outstation queue exists, any allocation to a localite student throws <code>IneligibleDistanceException</code>.</em></p>
+
+<p><strong>Q5: What is the difference between Warden and Caretaker in your system?</strong><br>
+<em>A: A Warden has building-wide administrative authority (approving outpasses, handling discipline). A Caretaker is assigned to a specific floor and is responsible for physical room maintenance and occupancy.</em></p>
+
+<p><strong>Q6: Which collections did you use and why?</strong><br>
+<em>A: <code>ArrayList</code> for dynamic ordered lists (rooms, floors), <code>LinkedHashMap</code> for fast O(1) student lookup while preserving insertion order, and <code>LinkedList</code> as a FIFO Queue for outstation applications.</em></p>
+
+<p><strong>Q7: What is the difference between Day Out and Night Out pass?</strong><br>
+<em>A: <code>NightOutPass</code> extends <code>GatePass</code> and requires guardian consent verification, destination address, and emergency contact details. <code>DayOutPass</code> only requires basic curfew return times.</em></p>
+
+<p><strong>Q8: What design pattern did you use?</strong><br>
+<em>A: The Strategy Pattern (for refund policies), DAO / Storage Pattern (for data persistence abstraction), and Composition (for hostel/floor/room structural hierarchy).</em></p>
+
+<p><strong>Q9: How are room fees calculated?</strong><br>
+<em>A: Using a dynamic formula in <code>Room.calculateSemesterFee()</code>: Base rent according to seater count (2, 3, or 4) + AC surcharge (Rs. 15,000) + Attached washroom surcharge (Rs. 8,000).</em></p>
+
+<p><strong>Q10: Where is the data stored?</strong><br>
+<em>A: In the <code>data/</code> folder across structured CSV files (<code>staff.csv</code>, <code>hostels.csv</code>, <code>rooms.csv</code>, <code>students.csv</code>, <code>complaints.csv</code>, <code>gatepasses.csv</code>).</em></p>
+
+</body>
+</html>

@@ -1,0 +1,24 @@
+# Compiled class files
+bin/
+*.class
+
+# Package Files
+*.jar
+*.war
+*.ear
+
+# Virtual machine crash logs
+hs_err_pid*
+replay_pid*
+
+# VS Code settings that shouldn't be committed
+.vscode/*
+!.vscode/settings.json
+!.vscode/launch.json
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Dynamic runtime data (optional to ignore or keep)
+data/*.dat
